@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { All, Controller, Get ,Post} from '@nestjs/common';
 import { TestService} from '../../service/test/test.service';
 
 @Controller('test')
@@ -7,10 +7,11 @@ export class TestController{
   constructor(private readonly testService :TestService ) {}
 
 
-  @Get("message")
+  // @All("message")
+  @Post("message")
   async getMessage():Promise<any>{
     let result :Message ={
-      msg:this.testService.getMessage(),
+      msg: this.testService.getMessage(),
       code:200
     }
     return result;

@@ -3,6 +3,8 @@ import { AppModule } from './app.module';
 import * as express from 'express';
 import { loggerMiddle} from './middleware/logger.middleware';
 import {LoggerInterceptor} from './interceptor/logger.interceptor';
+import { AnyExceptionFilter } from './filter/any-exception.filter';
+import { from } from 'rxjs';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -10,8 +12,13 @@ async function bootstrap() {
   app.use(express.json());
   app.use(express.urlencoded({extended: true}))
   // app.use(loggerMiddle);
+
   // 全局拦截器
   app.useGlobalInterceptors(new LoggerInterceptor());
+
+  // 全局异常过滤器
+  app.useGlobalFilters(new AnyExceptionFilter());
+
 
   // 全局过滤器
   // app.useGlobalFilters();

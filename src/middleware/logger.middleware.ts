@@ -1,5 +1,5 @@
 import { Injectable, NestMiddleware } from '@nestjs/common';
-import { logger } from '../utils/log4js';
+import { logger } from '../utils/Log4jsUtil';
 import { Request, Response } from 'express';
 /**
  * @Auth INS6+
