@@ -2,13 +2,24 @@ import { Controller, Get } from '@nestjs/common';
 import { TestService} from '../../service/test/test.service';
 
 @Controller('test')
-export class TestController {
+export class TestController{
 
   constructor(private readonly testService :TestService ) {}
 
+
   @Get("message")
-  async getMessage():Promise<string>{
-    return this.testService.getMessage();
+  async getMessage():Promise<any>{
+    let result :Message ={
+      msg:this.testService.getMessage(),
+      code:200
+    }
+    return result;
   }
 
+}
+
+export interface Message {
+  msg:string;
+  data?:{};
+  code:200
 }
