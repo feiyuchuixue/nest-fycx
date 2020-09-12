@@ -1,6 +1,9 @@
 # nest-fycx
-##目录结构
 
+
+
+```
+--目录结构--
 ├─nest-cli.json
 ├─package-lock.json
 ├─package.json
@@ -43,3 +46,5 @@
 |  |     |  └test.controller.ts
 |  ├─config
 |  |   └log4js.config.ts
+```
+
