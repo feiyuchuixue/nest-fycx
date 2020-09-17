@@ -26,12 +26,13 @@ export class ContextTrace {
     public readonly path?: string,
     public readonly lineNumber?: number,
     public readonly columnNumber?: number,
-  ) {}
+  ) {
+  }
 }
 
 
 // 注入配置
- Log4js.configure(log4jsConfig);
+Log4js.configure(log4jsConfig);
 
 // 实例化
 const log = Log4js.getLogger();
@@ -84,7 +85,7 @@ export class logger {
     loggerCustom.info(logger.getStackTrace(), ...args);
   }
 
-  static request(...args){
+  static request(...args) {
     const loggerCustom = Log4js.getLogger('http');
     loggerCustom.info(logger.getStackTrace(), ...args);
   }

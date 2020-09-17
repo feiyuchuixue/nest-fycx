@@ -7,25 +7,22 @@ import * as Moment from 'moment'; // 处理时间的工具
 
 export class DateUtil {
 
-  public static dateFormat(date?: (Date | number),format?:string){
-    if (!!format){
-      return  Moment(date).format(format)
-    }else {
-      return  Moment(date).format('YYYY-MM-DD HH:mm:ss')
+  public static dateFormat(date?: (Date | number), format?: string) {
+    if (!!format) {
+      return Moment(date).format(format);
+    } else {
+      return Moment(date).format('YYYY-MM-DD HH:mm:ss');
     }
   }
 
-  public static getCurrentDate(format?:string){
-    if (!!format){
-      return  Moment(new Date()).format(format)
-    }else {
-      return  Moment(new Date()).format('YYYY-MM-DD HH:mm:ss')
+  public static getCurrentDate(format?: string) {
+    if (!!format) {
+      return Moment(new Date()).format(format);
+    } else {
+      return Moment(new Date()).format('YYYY-MM-DD HH:mm:ss');
     }
   }
-
 
 
 }
-console.log(DateUtil.dateFormat(new Date(),'YYYY-MM-DD'))
-console.log(DateUtil.dateFormat(Date.now(),'YYYY-MM-DD HH:mm:ss'))
 
