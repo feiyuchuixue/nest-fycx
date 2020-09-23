@@ -6,12 +6,9 @@
 
 import { Message } from '../interfaces/message.interface';
 import { Injectable } from '@nestjs/common';
-import { logger } from '../../../utils/Log4jsUtil';
 
-@Injectable()
+// @Injectable()
 export class MessageService {
-
- // success(data:{},intc:number):string
 
   success(data?: {}, msg?: string, code?: number): Message {
     let prop = {} as Message;

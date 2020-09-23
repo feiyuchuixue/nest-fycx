@@ -23,11 +23,6 @@ export class LoggerInterceptor implements NestInterceptor {
           logger.warn(logFormat);
         } else if (code < 400) {
           logger.access(logFormat);
-          /*logger.log("【log】"+logFormat);
-          logger.error("【error】"+logFormat);
-          logger.warn("【warn】"+logFormat);
-          logger.info("【info】"+logFormat);*/
-          // logger.request("【request http】"+logFormat);
         }
         return data;
       }),

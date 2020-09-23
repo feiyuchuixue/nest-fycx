@@ -5,6 +5,8 @@ import { loggerMiddle} from './middleware/logger.middleware';
 import {LoggerInterceptor} from './interceptor/logger.interceptor';
 import { AnyExceptionFilter } from './filter/any-exception.filter';
 import { from } from 'rxjs';
+import { MongooseCoreModule } from '@nestjs/mongoose/dist/mongoose-core.module';
+
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -12,6 +14,8 @@ async function bootstrap() {
   app.use(express.json());
   app.use(express.urlencoded({extended: true}))
   // app.use(loggerMiddle);
+
+  //app.use()
 
   // 全局拦截器
   app.useGlobalInterceptors(new LoggerInterceptor());
