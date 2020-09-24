@@ -1,18 +1,21 @@
+```
 # nest-fycx
 
 
 
-```
+​```
 --目录结构--
+├─.env
+├─.eslintrc.js
+├─.gitignore
+├─.prettierrc
 ├─nest-cli.json
 ├─package-lock.json
 ├─package.json
 ├─README.md
+├─tree.txt
 ├─tsconfig.build.json
 ├─tsconfig.json
-├─test
-|  ├─app.e2e-spec.ts
-|  └jest-e2e.json
 ├─src
 |  ├─app.controller.spec.ts
 |  ├─app.controller.ts
@@ -23,16 +26,24 @@
 |  |   ├─DateUtil.ts
 |  |   ├─Log4jsUtil.ts
 |  |   └Util.ts
-|  ├─service
-|  |    ├─test
-|  |    |  ├─test.service.spec.ts
-|  |    |  └test.service.ts
+|  ├─sysAdmin
+|  |    ├─sysAdmin.controller.ts
+|  |    ├─sysAdmin.module.ts
+|  |    ├─sysAdmin.providers.ts
+|  |    ├─sysAdmin.service.ts
+|  |    ├─schemas
+|  |    |    └sysAdmin.schemas.ts
+|  |    ├─dto
+|  ├─mongoDb
+|  |    ├─mongo.module.ts
+|  |    └mongo.providers.ts
 |  ├─module
-|  |   ├─test
-|  |   |  └test.module.ts
+|  |   ├─global
+|  |   |   └global.module.ts
 |  ├─middleware
 |  |     ├─logger.middleware.spec.ts
 |  |     └logger.middleware.ts
+|  ├─interface
 |  ├─interceptor
 |  |      ├─logger.interceptor.spec.ts
 |  |      └logger.interceptor.ts
@@ -40,11 +51,23 @@
 |  ├─filter
 |  |   ├─any-exception.filter.spec.ts
 |  |   └any-exception.filter.ts
-|  ├─controller
-|  |     ├─test
-|  |     |  ├─test.controller.spec.ts
-|  |     |  └test.controller.ts
 |  ├─config
 |  |   └log4js.config.ts
+|  ├─base
+|  |  ├─BaseService.ts
+|  |  ├─message
+|  |  |    ├─service
+|  |  |    |    └message.service.ts
+|  |  |    ├─interfaces
+|  |  |    |     └message.interface.ts
+|  |  ├─config
+|  |  |   └config.service.ts
+├─app-log
+|    ├─request
+|    |    └request.2020-09-23.log
+|    ├─errors
+|    |   └error.2020-09-23.log
+|    ├─access
+|    |   └access.2020-09-23.log
+​```
 ```
-
