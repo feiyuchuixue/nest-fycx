@@ -3,6 +3,8 @@
 ## TODO
 
 - [x] mongo db集成
+- [x] log日志改造
+- [x] 全局异常捕获
 - [ ] redis 集成
 - [ ] rebittMq 集成
 - [ ] jwt验证
