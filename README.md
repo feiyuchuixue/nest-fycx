@@ -1,9 +1,16 @@
+# nest.js 基础框架
+
+## TODO
+
+- [x] mongo db集成
+- [ ] redis 集成
+- [ ] rebittMq 集成
+- [ ] jwt验证
+- [ ] consul集成
+
+## 目录结构
+
 ```
-# nest-fycx
-
-
-
-​```
 --目录结构--
 ├─.env
 ├─.eslintrc.js
