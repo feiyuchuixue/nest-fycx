@@ -5,7 +5,7 @@
 - [x] mongo db集成
 - [x] log日志改造
 - [x] 全局异常捕获
-- [ ] redis 集成
+- [x] redis 集成
 - [ ] rebittMq 集成
 - [ ] jwt验证
 - [ ] consul集成
@@ -78,5 +78,7 @@
 |    |   └error.2020-09-23.log
 |    ├─access
 |    |   └access.2020-09-23.log
-​```
+```
+```
+
 ```
