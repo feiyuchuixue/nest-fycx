@@ -4,7 +4,7 @@
  * @Description:
  */
 import * as mongoose from 'mongoose';
-import {ConfigService} from '../base/config/config.service';
+import { Util } from '../utils/Util';
 
 
 export const mongoProviders = [
@@ -12,13 +12,12 @@ export const mongoProviders = [
     provide: 'dbConnect',
     useFactory:
       async function(){
-       let conf = new ConfigService()
-       //console.log("conf 1111==",conf);
-       let uri = 'mongodb://'+conf.get('host')+':'+conf.get('port')+'/'+conf.get('dbName')
-       //console.log("uri ==========", uri);
-       const user = conf.get('user');
-       const pwd =conf.get('pwd');
-       const authSource = conf.get('authSource')
+
+       const uri = 'mongodb://'+  Util.getEnvConf().get('mongo.host')+':'+ Util.getEnvConf().get('mongo.port')+'/'+ Util.getEnvConf().get('mongo.dbName')
+       const user =  Util.getEnvConf().get('mongo.user');
+       const pwd = Util.getEnvConf().get('mongo.pwd');
+       const authSource =  Util.getEnvConf().get('mongo.authSource')
+       const poolSize = Number( Util.getEnvConf().get('mongo.poolSize'));
        return await mongoose.connect(
          uri,
           {
@@ -27,6 +26,7 @@ export const mongoProviders = [
             authSource:authSource,
             useNewUrlParser: true,
             useUnifiedTopology: true,
+            poolSize:poolSize
           })
 
 

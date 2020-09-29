@@ -7,7 +7,7 @@ import * as Moment from 'moment'; // 处理时间的工具
 
 export class DateUtil {
 
-  public static dateFormat(date?: (Date | number), format?: string) {
+  public static dateFormat(date?: (Date | number), format?: string) :string {
     if (!!format) {
       return Moment(date).format(format);
     } else {
@@ -15,7 +15,7 @@ export class DateUtil {
     }
   }
 
-  public static getCurrentDate(format?: string) {
+  public static getCurrentDate(format?: string):string {
     if (!!format) {
       return Moment(new Date()).format(format);
     } else {

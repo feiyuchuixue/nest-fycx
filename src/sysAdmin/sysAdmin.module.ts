@@ -9,6 +9,7 @@ import { SysAdminService } from './sysAdmin.service';
 import { sysAdminProviders } from './sysAdmin.providers';
 import { mongoModule } from '../mongoDb/mongo.module';
 
+
 @Module({
   imports:[mongoModule],
   controllers:[SysAdminController],
