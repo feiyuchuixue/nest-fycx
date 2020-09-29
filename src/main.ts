@@ -3,10 +3,11 @@ import { AppModule } from './app.module';
 import * as express from 'express';
 import { LoggerInterceptor } from './interceptor/logger.interceptor';
 import { AnyExceptionFilter } from './filter/any-exception.filter';
-import { MicroserviceOptions, Transport } from '@nestjs/microservices';
-
+import { Util } from './utils/Util';
+import { logger } from './utils/Log4jsUtil';
 
 async function bootstrap() {
+  let conf = Util.getEnvConf();
   const app = await NestFactory.create(AppModule);
   // 全局中间件 的使用
   app.use(express.json());
@@ -25,10 +26,9 @@ async function bootstrap() {
   app.setGlobalPrefix('nest-fycx');
   // 跨域配置
   app.enableCors();
+  // 启动shutdown 钩子
+  app.enableShutdownHooks();
 
-
-
-  await app.startAllMicroservicesAsync();
-  await app.listen(3000,() => console.log("nest.js is running ..."));
+  await app.listen(conf.get('port'),() => logger.info( '=====|=====|======= nest.js is running in port=' + conf.get('port') + '=======|=====|=====' ));
 }
 bootstrap();

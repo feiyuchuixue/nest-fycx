@@ -6,9 +6,9 @@ import {ConfigService} from '../../base/config/config.service';
 @Module({
   imports: [],
   controllers: [],
-  providers: [ConfigService],
+  providers: [],
   // 共享模块，加入此模块的资源可以被整个 TestModule 使用
-  exports: [ConfigService],
+  exports: [],
 })
 export class GlobalModule {
 }
