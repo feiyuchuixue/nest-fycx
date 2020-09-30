@@ -23,9 +23,11 @@ export class SysAdminService extends BaseService  {
   async find(): Promise<Message> {
     let sysAdmin = await this.sysAdminModel.find({});
     for (const sysAdminElement of sysAdmin) {
-      await this.redisClient.set(sysAdminElement.id, JSON.stringify(sysAdminElement), 'EX', 10);
+
+      await this.redisClient.set(sysAdminElement.id, JSON.stringify(sysAdminElement), 'Ex', 10);
     }
-    await this.redisPubClient.publish('news', 'uuid = 11223344');
+    // redis 消息发布
+    await this.redisPubClient.publish('news', 'this is a redis pub message ...');
     return this.msg.success(sysAdmin);
   }
 

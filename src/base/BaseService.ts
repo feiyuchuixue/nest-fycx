@@ -9,6 +9,8 @@ import { Redis } from 'ioredis';
 import { Util } from '../utils/Util';
 import { OnApplicationBootstrap, OnApplicationShutdown, OnModuleDestroy, OnModuleInit } from '@nestjs/common';
 import { logger } from '../utils/Log4jsUtil';
+import { doc } from 'prettier';
+import breakParent = doc.builders.breakParent;
 
 const Redis = require('ioredis');
 
@@ -17,6 +19,7 @@ export class BaseService implements OnModuleInit, OnApplicationBootstrap, OnAppl
   protected readonly redisClient: Redis;
   protected readonly redisPubClient: Redis;
   protected readonly redisSubClient: Redis;
+
 
   constructor() {
     let conf = Util.getEnvConf();
@@ -44,6 +47,7 @@ export class BaseService implements OnModuleInit, OnApplicationBootstrap, OnAppl
         db: conf.get('redis.db'),
       });
 
+
   }
 
   // ==================== nestjs生命周期 ===========================
@@ -53,25 +57,43 @@ export class BaseService implements OnModuleInit, OnApplicationBootstrap, OnAppl
   }
 
 
-
   // ## 在应用程序完全启动并引导后调用
   onApplicationBootstrap(): any {
+    let conf = Util.getEnvConf();
     logger.info('on application 【bootstrap】 ...');
-    // # 订阅 news channel
-    this.redisSubClient.subscribe('news', ((err, listenCount) => {
-      logger.info(' redis sub , the channel: [ "news" ] , listen channel count = ' + listenCount);
+    // const key = '__keyevent@0__:expired';
+    // 设置监听 redis db 的expire 超时事件
+    const expired_subKey = `__keyevent@${conf.get('redis.db')}__:expired`;
+    // 配置监听 channel
+    let channel = ['news', expired_subKey];
+    //  订阅  channel
+    this.redisSubClient.subscribe(channel, ((err, listenCount) => {
+      logger.info(' redis sub , channel is 【' + channel + '】， listen channel count = ' + listenCount);
     }));
 
     // # 订阅  message 的 接收
     this.redisSubClient.on('message', (channel, message) => {
       logger.info('Receive message :【' + message + '】 from channel :【' + channel + '】');
+
+      channel = channel.toString();
+      if (channel.indexOf('news') > 0) {
+         // deal news method() ...
+      }
+
+      if (channel.indexOf('expired') > 0) {
+        // deal redis key expired event method() ..
+
+      }
+
+
     });
+
 
   }
 
 // ## 响应系统信号(当应用程序关闭时，例如SIGTERM)
   onApplicationShutdown(signal?: string): any {
-    logger.info('on application 【shutdown】... ,signal = ' +signal);
+    logger.info('on application 【shutdown】... ,signal = ' + signal);
 
   }
 
