@@ -27,7 +27,7 @@
     "@nestjs/jwt": "^7.1.0",
     "@nestjs/microservices": "^7.4.4",
     "@nestjs/mongoose": "^7.0.2",
-    "@nestjs/platform-express": "^7.0.0",
+    "@nestjs/platform-express": "^9.2.1",
     "ioredis": "^4.17.3",
     "log4js": "^6.3.0",
     "moment": "^2.27.0",
